@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect, session
 import bd
 from checker_prof import check_logged_in_p
 from checker_aluno import check_logged_in_a
+from checker_resp import check_logged_in_r
 from datetime import timedelta
 
 
@@ -13,6 +14,9 @@ class AjudaProf:
 
         @app.route('/')
         def primeira_tela():
+            session.pop('user_p', None)
+            session.pop('user_a', None)
+            session.pop('user_r', None)
             return render_template('primeira_tela.html')
 
         @app.route('/logout_p', methods=['POST', 'GET'])
@@ -23,6 +27,11 @@ class AjudaProf:
         @app.route('/logout_a', methods=['POST', 'GET'])
         def logout_a():
             session.pop('user_a', None)
+            return render_template('logout.html')
+
+        @app.route('/logout_r', methods=['POST', 'GET'])
+        def logout_r():
+            session.pop('user_r', None)
             return render_template('logout.html')
 
         # rotas do prof começam aqui
@@ -36,7 +45,7 @@ class AjudaProf:
                 # pega oq o prof digitou no usuario e senha
                 usuario_p = request.form['usuario_p']
                 senha_p = request.form['senha_p']
-                
+
                 # abre o banco de dados
                 mysql = bd.SQL()
 
@@ -102,10 +111,9 @@ class AjudaProf:
                 # pega oq o aluno digitou no usuario e senha
                 usuario_a = int(request.form['usuario_a'])
                 senha_a = request.form['senha_a']
-                
+
                 # abre o banco de dados
                 mysql = bd.SQL()
-
                 # puxa do banco de dados daquele usuário(idt) o usuario e senha para validar
                 comando = f"SELECT matricula_aluno AS usuario, senha_aluno AS senha, nme_aluno as nome FROM tb_aluno " \
                           f"WHERE matricula_aluno=%s AND senha_aluno=%s;"
@@ -134,30 +142,30 @@ class AjudaProf:
             msg = "Entrou"
             return render_template('teste_de_login.html')
 
-        @app.route('/ver_notas')
+        @app.route('/ver_notas', methods=['POST', 'GET'])
         @check_logged_in_a
         def notas():
             # renderiza o html notas
             pass
 
-        @app.route('/ver_presenca_e_atividades')
+        @app.route('/ver_presenca_e_atividades', methods=['POST', 'GET'])
         @check_logged_in_a
         def presenca_e_atividades():
             # renderiza o html atividades e presença
             pass
 
-        @app.route('/editar_perfil_a')
+        @app.route('/editar_perfil_a', methods=['POST', 'GET'])
         @check_logged_in_a
         def editar_perfil_a():
             # renderiza o html de editar perfil
             pass
 
-        @app.route('/esqueci_senha')
+        @app.route('/esqueci_senha', methods=['POST', 'GET'])
         def esqueci_senha():
             # renderiza o html de esqueci a senha POS(login)
             pass
 
-        @app.route('/primeiro_acesso')
+        @app.route('/primeiro_acesso', methods=['POST', 'GET'])
         def primeiro_acesso():
             # renderiza o html de primeiro acesso POS(login)
             pass
@@ -165,38 +173,43 @@ class AjudaProf:
         # rotas do aluno acabam aqui
         # rotas do responsavel começam aqui
 
-        @app.route('/login_r')
+        @app.route('/login_r', methods=['POST', 'GET'])
         def login_responsaveis():
-            return render_template('login_r.html')
+            if request.method == 'POST':
+                # pega oq o prof digitou no usuario e senha
+                usuario_r = int(request.form['usuario_r'])
 
-        @app.route('/menu_principal_resp', methods=['POST'])
+                # abre o banco de dados
+                mysql = bd.SQL()
+
+                # puxa do banco de dados daquele usuário(idt) o usuario e senha para validar
+                comando = f"SELECT cpf_responsavel AS cpf, nme_responsavel as nome " \
+                          f"FROM tb_responsavel WHERE cpf_responsavel=%s;"
+                cs = mysql.consultar(comando, [usuario_r])
+
+                # se existir a matricula no banco de dados que o usuario digitou,
+                # esta ficará armazenada em dados, se n, vai entrar
+                # na primeira condiçao onde retornará dados invalidos
+                dados = cs.fetchone()
+
+                if dados is None:
+                    return redirect('/login_r')
+                # abaixo haverá a validação: comparando oq o usuario digitou e oq está no banco de dados
+                if dados[0] == usuario_r:
+                    session.permanent = True
+                    session['user_r'] = usuario_r
+                    return redirect('/menu_principal_resp')
+                elif dados[0] != usuario_r:
+                    return redirect('/login_r')
+            else:
+                if "user_r" in session:
+                    return redirect('/menu_principal_resp')
+                return render_template('login_r.html')
+
+        @app.route('/menu_principal_resp', methods=['POST', 'GET'])
+        @check_logged_in_r
         def menu_principal_resp():
-            # pega oq o prof digitou no usuario e senha
-            usuario_r = int(request.form['usuario_r'])
-
-            # abre o banco de dados
-            mysql = bd.SQL()
-
-            # puxa do banco de dados daquele usuário(idt) o usuario e senha para validar
-            comando = f"SELECT cpf_responsavel AS cpf, nme_responsavel as nome " \
-                      f"FROM tb_responsavel WHERE cpf_responsavel=%s;"
-            cs = mysql.consultar(comando, [usuario_r])
-
-            # se existir a matricula no banco de dados que o usuario digitou,
-            # esta ficará armazenada em dados, se n, vai entrar
-            # na primeira condiçao onde retornará dados invalidos
-            dados = cs.fetchone()
-
-            if dados is None:
-                return redirect('/login_r')
-            usuario = dados[0]
-
-            # abaixo haverá a validação: comparando oq o usuario digitou e oq está no banco de dados
-            if usuario == usuario_r:
-                msg = f"entrou, bem vindo {dados[1]}"
-                return render_template('teste_de_login.html', msg=msg)
-            elif usuario != usuario_r:
-                return redirect('/login_r')
+            return render_template('teste_de_login.html')
 
         # rotas do responsavel acabam aqui
 
