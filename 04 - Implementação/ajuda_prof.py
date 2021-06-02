@@ -36,8 +36,7 @@ class AjudaProf:
                 # pega oq o prof digitou no usuario e senha
                 usuario_p = request.form['usuario_p']
                 senha_p = request.form['senha_p']
-                session.permanent = True
-                session['user_p'] = usuario_p
+                
                 # abre o banco de dados
                 mysql = bd.SQL()
 
@@ -56,6 +55,8 @@ class AjudaProf:
 
                 # se existirem dados validos que batem com oq há no bd entrará no else abaixo
                 else:
+                    session.permanent = True
+                    session['user_p'] = usuario_p
                     return redirect('/menu_principal_prof')
             else:
                 if "user_p" in session:
@@ -101,8 +102,7 @@ class AjudaProf:
                 # pega oq o aluno digitou no usuario e senha
                 usuario_a = int(request.form['usuario_a'])
                 senha_a = request.form['senha_a']
-                session.permanent = True
-                session['user_a'] = usuario_a
+                
                 # abre o banco de dados
                 mysql = bd.SQL()
 
@@ -120,6 +120,8 @@ class AjudaProf:
 
                 # se existirem dados validos que batem com oq há no bd entrará no else abaixo
                 else:
+                    session.permanent = True
+                    session['user_a'] = usuario_a
                     return redirect('/menu_principal_aluno')
             else:
                 if "user_a" in session:
