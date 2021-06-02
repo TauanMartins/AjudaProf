@@ -14,20 +14,26 @@
         <h1 class="title">Acesso Professor</h1>
         <h2 class="segundo-titulo">Ajuda Prof.</h2>
         <div class="box">
-            <form action="/menu_principal_prof" method="POST" >
+            <form action="/login_p" method="POST" >
                 <h2>{{ msg }}</h2>
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="text" name="usuario_p"
+                        <tr>
+                        <td>Usuário:</td>
+                        <td><input class="input is-large" type="text" name="usuario_p"
                                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
-                               placeholder="Usuário" size="10" minlength="10" maxlength="10" required/>
+                               placeholder="00000000000" size="10" minlength="10" maxlength="10" required/><td>
+                        </tr>
                     </div>
                 </div>
 
                 <div class="field">
                     <div class="control">
-                        <input class="input is-large" type="password" name="senha_p"
-                               placeholder="Senha" size="10" minlength="6" maxlength="8" required/>
+                        <tr>
+                            <td>Senha: </td>
+                            <td><input class="input is-large" type="password" name="senha_p"
+                                   placeholder="******" size="10" minlength="6" maxlength="8" required/></td>
+                        </tr>
                     </div>
                 </div>
 

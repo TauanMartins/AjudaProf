@@ -1,30 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="_styles/estilo.css">
-    <title>Home</title>
+   <meta charset="UTF-8">
+   <link href="static/formatar.css" rel="stylesheet" type="text/css">
+   <title>Menu Principal</title>
 </head>
 <body>
-    <header>
-            <div class="menu">
-                <a href="perfil_prof.html">Editar perfil</a>
-                <a href="atividades_notas_prof.html">Atividades e notas</a>
-            </div>
-
-    </header>
-    <div id="cabecalho">
-        <figure class="circle">
-            <img src="../_image/ProfessorGirafales.png" title="professor" alt="Foto/simbolo"/>
-        </figure>
-        <h1>Professor linguiça</h1>
-    </div>
-    <div>
-        <p><strong>Mural</strong></p>
-        <p><strong>Ocorrências</strong></p>
-    </div>
-    <footer>Rodapé</footer>  
+   <form method="POST" action="/alterar_notas">
+      <div style="text-align:center">
+         <h1> Menu Principal.</h1>
+         <h2>Resultado do login:</h2>
+         <hr/>
+         <h2>{{ msg }}</h2>
+         <button class="button">Alterar notas e Presença</button>
+         <hr/>
+         <br/>
+      </div>
+   </form>
+   <form method="POST" action="/logout_p">
+         <div style="text-align:center">
+            <button type = "submit"> Sair </button>
+         </div>
+   </form>
 </body>
 </html>
