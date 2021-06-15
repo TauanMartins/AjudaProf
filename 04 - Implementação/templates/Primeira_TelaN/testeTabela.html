@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <link href="static/ajax.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <title>Consultar tipo e software</title>
+</head>
+<body>
+  <h1>Consultar alunos</h1>
+  <hr/>
+  <div>
+      <table>
+          <tr>
+             <div>
+                <select id="select-8dabID" ONCHANGE='exec()' name="serie">
+                  <option value="None">Serie</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                </select>
+            </div>
+          </tr>
+      </table>
+      <br/>
+      <button onclick="exec()">Alunos</button>
+  </div>
+  <br/>
+  <div id="aluno">
+      Resultado
+  </div>
+  <hr/>
+  <br/>
+  <a href="/"> Voltar ao Menu </a>
+</body>
+</html>
+
+<script>
+ $.ajaxSetup({
+   type: "POST"
+ });
+
+ function exec(){
+   $.ajax({
+     url: "\aluno",
+     data: {
+       serie : $('#select-8dabID').val()
+     },
+     success: function( retorno ) {
+       $( "#aluno" ).html( retorno );
+     }
+   });
+ }
+</script>
