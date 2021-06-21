@@ -1,0 +1,143 @@
+.u-section-1 {
+  background-image: linear-gradient(0deg, rgba(0,0,0,0.25), rgba(0,0,0,0.25)), url("images/g8cd861281a43b5b2e4520d4d08f761db92a86db2587a717027f11440c516a1f644f8b7b3c7442bf6a0802d274f2e5478_1280.jpg");
+}
+
+.u-section-1 .u-sheet-1 {
+  min-height: 856px;
+}
+
+.u-section-1 .u-btn-1 {
+  background-image: none;
+  animation-duration: 1000ms;
+  border-style: solid;
+  font-weight: normal;
+  margin: 0 0 0 auto;
+  padding: 10px 30px;
+}
+
+.u-section-1 .u-form-1 {
+  height: 604px;
+  width: 500px;
+  margin: 0 auto 114px;
+}
+
+.u-section-1 .u-form-group-1 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-1 {
+  letter-spacing: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline !important;
+}
+
+.u-section-1 .u-input-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-label-2 {
+  letter-spacing: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline !important;
+}
+
+.u-section-1 .u-input-2 {
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-3 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-3 {
+  letter-spacing: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline !important;
+}
+
+.u-section-1 .u-input-3 {
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-4 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-4 {
+  letter-spacing: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline !important;
+}
+
+.u-section-1 .u-input-4 {
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-5 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-5 {
+  letter-spacing: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline !important;
+}
+
+.u-section-1 .u-input-5 {
+  background-image: none;
+}
+
+.u-section-1 .u-label-6 {
+  letter-spacing: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline !important;
+}
+
+.u-section-1 .u-input-6 {
+  background-image: none;
+}
+
+.u-section-1 .u-form-group-7 {
+  margin-left: 0;
+}
+
+.u-section-1 .u-label-7 {
+  letter-spacing: 0px;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-decoration: underline !important;
+}
+
+.u-section-1 .u-input-7 {
+  background-image: none;
+}
+
+.u-section-1 .u-btn-2 {
+  border-style: solid;
+  font-weight: 700;
+  text-transform: uppercase;
+  background-image: none;
+  letter-spacing: normal;
+}
+
+@media (max-width: 1199px) {
+  .u-section-1 .u-sheet-1 {
+    min-height: 832px;
+  }
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-form-1 {
+    width: 340px;
+  }
+
+  .u-section-1 .u-label-4 {
+    text-decoration: underline;
+  }
+}

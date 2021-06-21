@@ -6,7 +6,7 @@ class SQL:
         self.cnx = mysql.connector.connect(user=usuario, password=senha,
                                            host=host,
                                            database=esquema)
-        self.cs = self.cnx.cursor(buffered=True)
+        self.cs = self.cnx.cursor()
 
     def executar(self, comando, parametros):
         self.cs.execute(comando, parametros)

@@ -30,7 +30,7 @@
     <link rel="canonical" href="index.html">
     <meta property="og:url" content="index.html">
   </head>
-  <body class="u-body"><header class="u-align-left u-clearfix u-header u-sticky u-header" id="sec-29ca"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+  <body class="u-body"><header class="u-align-left u-clearfix u-header  u-header" id="sec-29ca"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <h1 class="u-custom-font u-text u-text-1">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-active-custom-color-2 u-text-custom-color-1 u-text-hover-custom-color-1 u-btn-1" href="/">Ajuda Prof</a>
         </h1>
@@ -43,10 +43,6 @@
             <div class="u-form-group u-form-group-1">
               <label for="text-8274" class="u-custom-font u-form-control-hidden u-label u-text-custom-color-1 u-text-font u-label-1"></label>
               <input type="text" placeholder="NOME COMPLETO" id="text-8274" name="nome" class="u-border-1 u-border-custom-color-3 u-custom-font u-font-lato u-input u-input-rectangle u-radius-8 u-white u-input-1" required="required" maxlength="50">
-            </div>
-            <div class="u-form-group u-form-name">
-              <label for="name-1070" class="u-custom-font u-form-control-hidden u-label u-text-custom-color-1 u-text-font u-label-2">Name</label>
-              <input type="text" placeholder="MATRÍCULA" onkeypress="return event.charCode >= 48 && event.charCode <= 57" minlength="10" id="name-1070" name="matricula" class="u-border-1 u-border-custom-color-3 u-custom-font u-font-lato u-input u-input-rectangle u-radius-8 u-white u-input-2" required="required" maxlength="10">
             </div>
             <div class="u-form-group u-form-select u-form-group-3">
               <label for="select-4fe9" class="u-custom-font u-form-control-hidden u-label u-text-custom-color-1 u-text-font u-label-3"></label>
@@ -85,17 +81,18 @@
               <label for="email-1070" class="u-custom-font u-form-control-hidden u-label u-text-custom-color-1 u-text-font u-label-6"></label>
               <input type="password" minlength="6" placeholder="SENHA (6 ATÉ 8 NÚMEROS)" id="email-1070" name="senha" class="u-border-1 u-border-custom-color-3 u-custom-font u-font-lato u-input u-input-rectangle u-radius-8 u-white u-input-6" required="required" maxlength="8">
             </div>
-            <div class="u-form-group u-form-group-7">
-              <label for="text-39a1" class="u-custom-font u-form-control-hidden u-label u-text-custom-color-1 u-text-font u-label-7"></label>
-              <input type="password" minlength="6" placeholder="CONFIRME A SENHA" id="text-39a1" name="senha1" class="u-border-1 u-border-custom-color-3 u-custom-font u-font-lato u-input u-input-rectangle u-radius-8 u-white u-input-7" required="required" maxlength="8">
+            <div class="u-form-group">
+              <label for="email-1070" class="u-custom-font u-form-control-hidden u-label u-text-custom-color-1 u-text-font u-label-6"></label>
+              <input type="text" minlength="10" placeholder="CPF do Responsável" id="cpf" name="cpf" class="u-border-1 u-border-custom-color-3 u-custom-font u-font-lato u-input u-input-rectangle u-radius-8 u-white u-input-6" required="required" maxlength="10">
+            </div>
+            <div class="u-form-group">
+              <label for="email-1070" class="u-custom-font u-form-control-hidden u-label u-text-custom-color-1 u-text-font u-label-6"></label>
+              <input type="text" minlength="5" placeholder="Nome do Responsável" id="nme" name="nme_r" class="u-border-1 u-border-custom-color-3 u-custom-font u-font-lato u-input u-input-rectangle u-radius-8 u-white u-input-6" required="required" maxlength="45">
             </div>
             <div class="u-align-left u-form-group u-form-submit">
               <a href="#" class="u-active-custom-color-2 u-border-1 u-border-custom-color-4 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-text-custom-color-4 u-text-hover-white u-btn-2">ENVIAR</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
-            <div class="u-form-send-message u-form-send-success"> Thank you! Your message has been sent. </div>
-            <div class="u-form-send-error u-form-send-message"> Unable to send your message. Please fix errors then try again. </div>
-            <input type="hidden" value="" name="recaptchaResponse">
           </form>
         </div>
       </div>
@@ -118,6 +115,10 @@
         $("#carregando").css("display", "block");
         $('#sec-9c4e').css("opacity", 0.2);
       },
+    success: function( retorno ) {
+              $( "#sec-9c4e" ).html();
+              alert("Cadastrado com sucesso")
+     },
       complete: function () {
         $('#carregando').css("display", "none");
      $('#sec-9c4e').css("opacity", 1);

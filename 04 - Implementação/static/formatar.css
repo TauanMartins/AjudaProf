@@ -1,67 +1,75 @@
 h1{
-    font-family: garamond;
-    font-size: 3em;
-    color: black;
- }
- 
- h2{
-    font-family: Brush Script MT;
-    font-size: 1.8em;
-    color: black;
- }
- 
- hr{
-    background-color: black;
-    height: 5px;
-    border: none;
- }
- 
- li{
-    padding: 10px;
- }
- 
- 
- a{
-     padding: 20px;
-    font-family: garamond;
-    font-size: 3em;
-    top:50%;
- }
- 
- a:link{
-    text-decoration:none;
-    color: gray;
- }
- 
- a:hover{
-    font-weight: bold;
- }
- 
- table{
+   font-family: garamond;
+   font-size: 3em;
+   color: black;
+}
+
+h2, #segundo-titulo{
+   text-decoration:none;
+   font-family: Brush Script MT;
+   font-size: 1.8em;
+   color: #299700;
+}
+
+hr{
+   background-color: black;
+   height: 5px;
+   border: none;
+}
+
+li{
+   padding: 10px;
+}
+
+
+.botaoT1{
     padding: 20px;
-    font-family: garamond;
-    font-size: 1.2em;
-    color: black;
-    border-collapse: collapse;
- }
- 
- th, td {
-    border: 1px solid black;
-    padding: 7px;
- }
- 
- select, input[type=text], input[type=password]{
-    font-family: garamond;
-    font-size: 1.2em;
-    font-weight: bold;
-    color: black;
- }
- 
- button{
-    font-family: garamond;
-    font-size: 1em;
-    font-weight: bold;
-    color: black;
-    padding: 7px;
- }
- 
+   font-family: garamond;
+   font-size: 3em;
+   top:50%;
+}
+
+.botaoT1:link{
+   text-decoration:none;
+   color: gray;
+}
+
+.botaoT1:hover{
+   font-weight: bold;
+}
+
+table{
+   padding: 20px;
+   font-family: garamond;
+   font-size: 1.2em;
+   color: black;
+   border-collapse: collapse;
+}
+
+th, td {
+   border: 1px solid black;
+   padding: 7px;
+}
+
+select, input[type=text], input[type=password]{
+   font-family: garamond;
+   font-size: 1.2em;
+   font-weight: bold;
+   color: black;
+}
+
+#tela1 {
+  margin: 200px;
+  font-size: 110%;
+}
+#login {
+    margin: 120px;
+  font-size: 110%;
+}
+button{
+   font-family: garamond;
+   font-size: 1em;
+   font-weight: bold;
+   color: black;
+   padding: 7px;
+}
