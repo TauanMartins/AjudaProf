@@ -107,7 +107,7 @@ class AjudaProf:
             sel = ''
             if request.method == "GET":
                 return render_template('Primeira_TelaNN//alterar_notas.html')
-            elif request.method == "POST" and request.form.get("idtSerie") is None:
+            elif request.method == "POST" and request.form.get("n1") is not None:
                 print("terceira cond")
                 idtSerie = request.form['serie']
                 bimestre = request.form['bimestre']
@@ -144,9 +144,11 @@ class AjudaProf:
                                 <td class="u-border-1 u-border-grey-75 u-table-cell"><input style="width:110px;" type="number" name='n2' id="{idt_aluno}" value="{n2}"/></td>
                                 <td class="u-border-1 u-border-grey-75 u-table-cell"><input style="width:110px;" type="number" name='n1' id="{idt_aluno}" value="{n3}"/></td>
                                 <td class="u-border-1 u-border-grey-75 u-table-cell">{media}</td>
-                                <td class="u-border-1 u-border-grey-75 u-table-cell">{rec} onload=(armazenar({idt_aluno, nme_aluno,notas, media, rec})</td></tr>"""
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">{rec} onload='(armazenar({idt_aluno, nme_aluno,notas, media, rec})'</td></tr>"""
                 return sel
-            elif request.method == "POST" and request.form.get("n1") is not None:
+            elif request.method == "POST":
+                lista = request.method('lista')
+
                 sel = print("terceira cond")
                 return sel
 
@@ -444,7 +446,7 @@ class AjudaProf:
                         <td class="u-border-2 u-border-grey-dark-1 u-first-column u-grey-5 u-table-cell"><input style="width:110px;" id="nome" name="nome" type="text" value="{nme_professor}"/></td>
                         <td class="u-border-2 u-border-grey-dark-1 u-table-cell"><input style="width:110px;" placeholder="Senha" name="senha" id='senha' type="text" minlength='6' maxlength="8" required="required" value="{senha_professor}"/></td>
                         <td class ="u-border-2 u-border-grey-dark-1 u-table-cell"><input style="width:110px;" name="matricula" id='matricula' type="text" minlength='10' maxlength="10" required="required" value="{matricula_professor}"/></td>
-                        <td class="u-border-2 u-border-grey-dark-1 u-table-cell"><input style="width:143px;" name="data" id='data' type="date" value="{nasc_professor}" /></td> 
+                        <td class="u-border-2 u-border-grey-dark-1 u-table-cell"><input style="width:143px;" name="data" id='data' type="date" value="{nasc_professor}" /></td>
                         <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{selectSangue}</select></td>
                         <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{nme_disciplina}</td>
                         <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{cod_disciplina_turma}º Série/Ano</td>
@@ -478,7 +480,7 @@ class AjudaProf:
                     sel += f"""<tr style="height: 43px;">
                             <td class="u-border-2 u-border-grey-dark-1 u-first-column u-grey-5 u-table-cell">{nme_aluno}<br></td>
                             <td class="u-border-2 u-border-grey-dark-1 u-table-cell">NULO</td>
-                            <td class ="u-border-2 u-border-grey-dark-1 u-table-cell">{nasc_aluno}</td> 
+                            <td class ="u-border-2 u-border-grey-dark-1 u-table-cell">{nasc_aluno}</td>
                             <td class="u-border-2 u-border-grey-dark-1 u-table-cell">NULO</td>
                             <td class="u-border-2 u-border-grey-dark-1 u-table-cell">NULO</td>
                             <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{mao_aluno}</td>
@@ -512,7 +514,7 @@ class AjudaProf:
                     sel += f"""<tr style="height: 43px;">
                                                 <td class="u-border-2 u-border-grey-dark-1 u-first-column u-grey-5 u-table-cell"><input id="nome" name="nome" type="text" value="{nme_aluno}"/><br></td>
                                                 <td class="u-border-2 u-border-grey-dark-1 u-table-cell"><input name="matricula" id='matricula' type="text" minlength='10' maxlength="10" required="required" value="{matricula_aluno}"/></td>
-                                                <td class ="u-border-2 u-border-grey-dark-1 u-table-cell"><input name="data" id='data' type="date" value="{nasc_aluno}" /></td> 
+                                                <td class ="u-border-2 u-border-grey-dark-1 u-table-cell"><input name="data" id='data' type="date" value="{nasc_aluno}" /></td>
                                                 <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{selectSerie} /></td>
                                                 <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{selectTurma} /></td>
                                                 <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{mao_aluno}</td>
@@ -597,7 +599,7 @@ class AjudaProf:
                     sel += f"""<tr style="height: 43px;">
                             <td class="u-border-2 u-border-grey-dark-1 u-first-column u-grey-5 u-table-cell"><input id="nome" name="nome" type="text" value="{nme_aluno}"/><br></td>
                             <td class="u-border-2 u-border-grey-dark-1 u-table-cell"><input name="matricula" id='matricula' type="text" minlength='10' maxlength="10" required="required" value="{matricula_aluno}"/></td>
-                            <td class ="u-border-2 u-border-grey-dark-1 u-table-cell"><input name="data" id='data' type="date" value="{nasc_aluno}" /></td> 
+                            <td class ="u-border-2 u-border-grey-dark-1 u-table-cell"><input name="data" id='data' type="date" value="{nasc_aluno}" /></td>
                             <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{selectSerie} /></td>
                             <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{selectTurma} /></td>
                             <td class="u-border-2 u-border-grey-dark-1 u-table-cell">{selectMao}/></td>
@@ -665,55 +667,50 @@ class AjudaProf:
             if request.method == 'GET':
                 # id
                 mysql = bd.SQL()
-                comando = "SELECT idt_disciplina, nme_disciplina FROM tb_disciplina ORDER BY nme_disciplina;"
+                comando = "SELECT idt_disciplina, nme_disciplina, cod_disciplina_turma FROM tb_disciplina JOIN tb_turma on idt_serie_turma=cod_disciplina_turma ORDER BY nme_disciplina;"
 
                 cs = mysql.consultar(comando, ())
                 sel = f"""<select id="select-20fa" name="idt_disciplina" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" >
                                                             <option value="{0}">Disciplina</option>"""
-                for [idt_disciplina, nme_disciplina] in cs:
-                    sel += f"""<option value="{idt_disciplina}">{nme_disciplina}</option> """
+                for [idt_disciplina, nme_disciplina, serie] in cs:
+                    sel += f"""<option value="{idt_disciplina}">{nme_disciplina} - {serie}º Ano</option> """
                 sel += "</select>"
-
-                mysql2 = bd.SQL()
-                comando2 = "SELECT idt_serie_turma FROM tb_turma ORDER BY idt_serie_turma;"
-                cs2 = mysql2.consultar(comando2, ())
-                sel2 = f"""<select id="select-20fa" name="serie" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" >
-                                                                            <option value="{0}">Série/Ano</option>"""
-                for [idt_serie_turma] in cs2:
-                    sel2 += f"""<option value="{idt_serie_turma}">{idt_serie_turma}º Ano</option> """
-                sel2 += "</select>"
-
-                return render_template('Primeira_TelaNN//incluir_avaliacao.html', nme_disciplina=sel, idt_serie=sel2)
+                return render_template('Primeira_TelaNN//incluir_avaliacao.html', nme_disciplina=sel)
             if request.method == 'POST':
                 dt_avaliacao = request.form['date']
                 idt_disciplina = int(request.form['idt_disciplina'])
-                idt_serie = int(request.form['serie'])
-                print(dt_avaliacao, idt_disciplina, idt_serie)
-                mysql1 = bd.SQL()
+                print("data da avaliação: ",dt_avaliacao,"idt_disciplina: ", idt_disciplina)
+
+                mysql0 = bd.SQL()
+                comando0 = "SELECT cod_disciplina_turma FROM tb_disciplina JOIN tb_turma on idt_serie_turma=cod_disciplina_turma WHERE idt_disciplina=%s;"
+                cs = mysql0.consultar(comando0, [idt_disciplina])
+                serie = cs.fetchone()
+                print("serie: ", serie[0])
+
                 # puxa do banco de dados daquele usuário(idt) o usuario e senha para validar
                 comando1 = "INSERT INTO tb_avaliacao(dt_avaliacao, cod_disciplina, cod_avaliacao_turma) values(%s, %s, %s);"
-                mysql1.executar(comando1, [dt_avaliacao, idt_disciplina, idt_serie])
+                mysql0.executar(comando1, [dt_avaliacao, idt_disciplina, serie[0]])
 
-                mysql2 = bd.SQL()
                 comando2 = "SELECT idt_avaliacao FROM tb_avaliacao WHERE dt_avaliacao=%s AND cod_disciplina=%s AND cod_avaliacao_turma=%s;"
-                cs = mysql2.consultar(comando2, [dt_avaliacao, idt_disciplina, idt_serie])
-                dados = cs.fetchone()
-                print(dados[0])
-                mysql3 = bd.SQL()
+                cs1 = mysql0.consultar(comando2, [dt_avaliacao, idt_disciplina, serie[0]])
+                dados = cs1.fetchone()
+                print("idt_avaliação: ", dados[0])
+
                 # puxa do banco de dados daquele usuário(idt) o usuario e senha para validar
                 comando3 = "select idt_aluno from tb_aluno join tb_turma on tb_aluno.cod_turma=tb_turma.idt_serie_turma where idt_serie_turma=%s;"
-                alunos = mysql3.consultar(comando3, [(dados[0])])
+                alunos = mysql0.consultar(comando3, [(serie[0])])
 
-                mysql4 = bd.SQL()
-                comando4 = "INSERT INTO tb_notas(cod_aluno, cod_avaliacao) VALUES"
-                for [idt_aluno] in alunos:
-                    comando4 += f"({idt_aluno}, {dados[0]}),"
-                comando4 = comando4[:-1]
-                comando4 += ";"
-                print(comando4)
+                if alunos is not None:
+                    comando4 = "INSERT INTO tb_notas(cod_aluno, cod_avaliacao) VALUES"
+                    print("idt_aluno: ", alunos)
+                    for [idt_aluno] in alunos:
+                        print("idt_aluno: ", idt_aluno)
+                        comando4 += f"({idt_aluno}, {dados[0]}),"
+                    comando4 = comando4[:-1]
+                    comando4 += ";"
+                    print(comando4)
+                    mysql0.executar(comando4, [])
 
-
-                mysql4.executar(comando4, [])
                 return "ok"
 
 
