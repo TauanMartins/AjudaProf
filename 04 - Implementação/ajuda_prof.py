@@ -107,25 +107,24 @@ class AjudaProf:
             sel = ''
             if request.method == "GET":
                 return render_template('Primeira_TelaNN//alterar_notas.html')
-            elif request.method == "POST" and request.form.get("n1") is not None:
-                print("terceira cond")
+            elif request.method == "POST" and request.form.get("serie") is not None:
+                print("segunda cond")
                 idtSerie = request.form['serie']
                 bimestre = request.form['bimestre']
                 banco = bd.SQL()
-                comando1 = "select idt_disciplina from tb_disciplina join tb_professor on idt_professor=cod_professor WHERE matricula_professor=%s;"
-                cs1 = banco.consultar(comando1, [(session["user_p"])])
+                comando1 = "select idt_disciplina from tb_disciplina join tb_professor join tb_turma on " \
+                           "idt_professor=cod_professor AND cod_disciplina_turma=idt_serie_turma WHERE " \
+                           "matricula_professor=%s AND cod_disciplina_turma=%s;"
+                cs1 = banco.consultar(comando1, [(session["user_p"]), idtSerie])
                 dados1 = cs1.fetchone()
                 mysql = bd.SQL()
-                comando = "SELECT idt_aluno, nme_aluno as Nome, n1, n2, n3, media, rec FROM tb_aluno JOIN tb_notas JOIN tb_turma JOIN tb_avaliacao " \
+                comando = "SELECT idt_aluno, nme_aluno as Nome, n1, n2, n3, media, rec, idt_notas, cod_avaliacao_turma, peso_avaliacao FROM tb_aluno JOIN tb_notas JOIN tb_turma JOIN tb_avaliacao " \
                           "JOIN tb_disciplina JOIN ta_bimestre_turma JOIN tb_bimestre ON tb_aluno.idt_aluno=tb_notas.cod_aluno AND " \
                           "tb_aluno.cod_turma=tb_turma.idt_serie_turma AND tb_avaliacao.idt_avaliacao=tb_notas.cod_avaliacao AND " \
                           "tb_disciplina.idt_disciplina=tb_avaliacao.cod_disciplina AND tb_turma.idt_serie_turma=ta_bimestre_turma.cod_serie_turma " \
-                          "AND tb_bimestre.idtb_bimestre=ta_bimestre_turma.cod_bimestre WHERE idtb_bimestre=%s AND idt_serie_turma=%s AND idt_disciplina=%s;"
+                          "AND tb_bimestre.idtb_bimestre=ta_bimestre_turma.cod_bimestre AND tb_avaliacao.cod_bimestre=ta_bimestre_turma.cod_bimestre " \
+                          "WHERE tb_avaliacao.cod_bimestre=%s AND idt_serie_turma=%s AND idt_disciplina=%s;"
                 cs = mysql.consultar(comando, ([bimestre, idtSerie, dados1[0]]))
-
-                dados = cs
-                if dados is None:
-                    dados = ["Avaliação", 0]
 
                 sel += f"""
                       <tr style="height: 26px;">
@@ -135,28 +134,165 @@ class AjudaProf:
                         <td class="u-border-1 u-border-grey-75 u-table-cell">Avaliação 3</td>
                         <td class="u-border-1 u-border-grey-75 u-table-cell">Média</td>
                         <td class="u-border-1 u-border-grey-75 u-table-cell">Rec</td>
+                        <td class="u-border-1 u-border-grey-75 u-table-cell">Alterar</td>
                       </tr>"""
-                notas = " $('.n1').val},  $('.n2').val},  $('.n3').val}"
-                for [idt_aluno, nme_aluno, n1, n2, n3, media, rec] in cs:
+
+                for [idt_aluno, nme_aluno, n1, n2, n3, media, rec, idt_notas, cod_avaliacao_turma,
+                     peso_avaliacao] in cs:
+                    if (n1 or n2 or n3) != 0:
+                        media_calc = ((n1 + n2 + n3) / (peso_avaliacao + peso_avaliacao + peso_avaliacao))
+                    else:
+                        media_calc = 0
                     sel += f"""<tr style="height: 26px;">
                                 <td class="u-border-2 u-border-grey-dark-1 u-first-column u-grey-5 u-table-cell">{nme_aluno}<br></td>
-                                <td class="u-border-1 u-border-grey-75 u-table-cell"><input style="width:110px;" type="number" name='n1' id="{idt_aluno}" value="{n1}"/></td>
-                                <td class="u-border-1 u-border-grey-75 u-table-cell"><input style="width:110px;" type="number" name='n2' id="{idt_aluno}" value="{n2}"/></td>
-                                <td class="u-border-1 u-border-grey-75 u-table-cell"><input style="width:110px;" type="number" name='n1' id="{idt_aluno}" value="{n3}"/></td>
-                                <td class="u-border-1 u-border-grey-75 u-table-cell">{media}</td>
-                                <td class="u-border-1 u-border-grey-75 u-table-cell">{rec} onload='(armazenar({idt_aluno, nme_aluno,notas, media, rec})'</td></tr>"""
-                return sel
-            elif request.method == "POST":
-                lista = request.method('lista')
+                                <input type="hidden" name='idt_aluno' id="idt_aluno" value="{idt_aluno}"/>
+                                <input type="hidden" name='serie2' id="serie2" value="{cod_avaliacao_turma}"/>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">{n1}</td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">{n2}</td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">{n3}</td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">{media_calc:.2f}</td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell">{rec}</td>
+                                <td class="u-border-1 u-border-grey-75 u-table-cell"><button onclick="especificar({idt_notas})" >Selecionar</button></td></tr>"""
 
-                sel = print("terceira cond")
+                return sel
+            elif request.method == "POST" and request.form.get('n1') is None:
+                print("terceira cond")
+                idt_notas = request.form['idt_nota']
+                mysql = bd.SQL()
+                comando0 = "select cod_avaliacao_turma, cod_avaliacao, cod_aluno, idt_notas, cod_bimestre, cod_disciplina" \
+                           " from tb_notas join tb_avaliacao where cod_avaliacao=idt_avaliacao and idt_notas=%s;"
+                cs0 = mysql.consultar(comando0, [idt_notas])
+                notas = cs0.fetchone()
+                idtSerie = notas[0]
+                bimestre = notas[4]
+                idtDisc = notas[5]
+                comando = "SELECT idt_aluno, nme_aluno as Nome, n1, n2, n3, media, rec, idt_notas, cod_avaliacao, peso_avaliacao FROM tb_aluno JOIN tb_notas JOIN tb_turma JOIN tb_avaliacao " \
+                          "JOIN tb_disciplina JOIN ta_bimestre_turma JOIN tb_bimestre ON tb_aluno.idt_aluno=tb_notas.cod_aluno AND " \
+                          "tb_aluno.cod_turma=tb_turma.idt_serie_turma AND tb_avaliacao.idt_avaliacao=tb_notas.cod_avaliacao AND " \
+                          "tb_disciplina.idt_disciplina=tb_avaliacao.cod_disciplina AND tb_turma.idt_serie_turma=ta_bimestre_turma.cod_serie_turma " \
+                          "AND tb_bimestre.idtb_bimestre=ta_bimestre_turma.cod_bimestre AND tb_avaliacao.cod_bimestre=ta_bimestre_turma.cod_bimestre " \
+                          "WHERE tb_avaliacao.cod_bimestre=%s AND idt_serie_turma=%s AND idt_disciplina=%s AND idt_notas=%s;"
+                cs = mysql.consultar(comando, ([bimestre, idtSerie, idtDisc, notas[3]]))
+
+                sel += f"""
+                                      <tr style="height: 26px;">
+                                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
+                                        <td class="u-border-1 u-border-grey-75 u-table-cell">Avaliação 1</td>
+                                        <td class="u-border-1 u-border-grey-75 u-table-cell">Avaliação 2</td>
+                                        <td class="u-border-1 u-border-grey-75 u-table-cell">Avaliação 3</td>
+                                        <td class="u-border-1 u-border-grey-75 u-table-cell">Média</td>
+                                        <td class="u-border-1 u-border-grey-75 u-table-cell">Rec</td>
+                                        <td class="u-border-1 u-border-grey-75 u-table-cell">Alterar</td>
+                                      </tr>"""
+                for [idt_aluno, nme_aluno, n1, n2, n3, media, rec, idt_notas, cod_avaliacao, peso_avaliacao] in cs:
+                    if (n1 or n2 or n3) != 0:
+                        media_calc = ((n1 + n2 + n3) / (peso_avaliacao + peso_avaliacao + peso_avaliacao))
+                    else:
+                        media_calc = 0
+                    sel += f"""<tr style="height: 26px;">
+                                                <td class="u-border-2 u-border-grey-dark-1 u-first-column u-grey-5 u-table-cell">{nme_aluno}<br></td>
+                                                <input type="hidden" name='idt_aluno' id="idt_aluno" value="{idt_aluno}"/>
+                                                <input type="hidden" name='cod_avaliacao' id="cod_avaliacao" value="{cod_avaliacao}"/>
+                                                <input type="hidden" name='media' id="media" value="{media_calc}"/>
+                                                <td class="u-border-1 u-border-grey-75 u-table-cell"><input style="width:110px;" type="number" name='n1' id="n1" value="{n1}"/></td>
+                                                <td class="u-border-1 u-border-grey-75 u-table-cell"><input style="width:110px;" type="number" name='n2' id="n2" value="{n2}"/></td>
+                                                <td class="u-border-1 u-border-grey-75 u-table-cell"><input style="width:110px;" type="number" name='n3' id="n3" value="{n3}"/></td>
+                                                <td class="u-border-1 u-border-grey-75 u-table-cell">{media_calc:.2f}</td>
+                                                <td class="u-border-1 u-border-grey-75 u-table-cell">{rec}</td>
+                                                <td class="u-border-1 u-border-grey-75 u-table-cell"><button onclick="alterar({idt_notas})">Alterar</button></td></tr>"""
+                return sel
+            elif request.method == "POST" and request.form.get('idt_nota') is not None:
+                print("quarta cond")
+                idt_notas = request.form['idt_nota']
+                idt_aluno = request.form['idt_aluno']
+                cod_avaliacao = request.form['cod_avaliacao']
+                media_calc = float(request.form['media_calc'])
+                n1 = float(request.form['n1'])
+                n2 = float(request.form['n2'])
+                n3 = float(request.form['n3'])
+                print(
+                    f"idt_notas: {idt_notas}\nidt_aluno: {idt_aluno}\ncod_avaliacao: {cod_avaliacao}\n media_calc: {media_calc}\n n1:{n1}\n n2:{n2}\nn3:{n3}")
+                mysql = bd.SQL()
+                comando = "UPDATE tb_notas SET n1=%s, n2=%s, n3=%s, media=%s WHERE cod_avaliacao=%s AND cod_aluno=%s AND idt_notas=%s;"
+                cs = mysql.executar(comando, [n1, n2, n3, media_calc, cod_avaliacao, idt_aluno, idt_notas])
+                print(cs)
                 return sel
 
         @app.route('/alterar_presenca', methods=['POST', "GET"])
         @check_logged_in_p
         def alterar_presenca():
             # renderiza o html de alterar atividades e presença
-            return render_template('Primeira_TelaNN//alterar_presenca.html')
+            sel = ""
+            if request.method == 'GET':
+                return render_template('Primeira_TelaNN//alterar_presenca.html')
+            if request.method == "POST" and request.form.get("idt_aluno") is None:
+                print("segunda cond")
+                idtSerie = request.form['serie']
+                bimestre = request.form['bimestre']
+                banco = bd.SQL()
+                comando1 = "select idt_disciplina from tb_disciplina join tb_professor join tb_turma on " \
+                           "idt_professor=cod_professor AND cod_disciplina_turma=idt_serie_turma WHERE " \
+                           "matricula_professor=%s AND cod_disciplina_turma=%s;"
+                cs1 = banco.consultar(comando1, [(session["user_p"]), idtSerie])
+                dados1 = cs1.fetchone()
+                mysql = bd.SQL()
+                comando = "SELECT distinct idt_aluno, nme_aluno, presen_aula FROM tb_aluno JOIN tb_aula JOIN tb_turma JOIN tb_aula_aluno JOIN tb_disciplina " \
+                          "JOIN ta_bimestre_turma JOIN tb_bimestre ON tb_aluno.idt_aluno=tb_aula_aluno.cod_aluno_aula AND tb_aula_aluno.cod_aula=tb_aula.idt_aula " \
+                          "AND tb_aluno.cod_turma=tb_turma.idt_serie_turma AND tb_turma.idt_serie_turma=ta_bimestre_turma.cod_serie_turma AND " \
+                          "tb_bimestre.idtb_bimestre=ta_bimestre_turma.cod_bimestre AND tb_aula.cod_bimestre_aula=ta_bimestre_turma.cod_bimestre AND tb_aula.cod_turma=idt_serie_turma " \
+                          "AND tb_disciplina.cod_disciplina_turma=tb_turma.idt_serie_turma WHERE tb_aula.cod_bimestre_aula=%s AND idt_serie_turma=%s AND idt_disciplina=%s ;"
+                cs = mysql.consultar(comando, ([bimestre, idtSerie, dados1[0]]))
+                sel += """<tr style="height: 26px;">
+                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
+                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presença</td>
+                        <td class="u-border-1 u-border-grey-75 u-table-cell">Selecionar</td>
+                      </tr>"""
+                for [idt_aluno, nme_aluno, presen_aula] in cs:
+                    if presen_aula:
+                        presenca = "Presente"
+                    else:
+                        presenca = "Faltou"
+                    sel += f"""<tr style="height: 56px;">
+                        <input type="hidden" name='serie2' id="serie2" value="{idtSerie}"/>
+                        <input type="hidden" name='idt_aluno' id="idt_aluno" value="{idt_aluno}"/>
+                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">{nme_aluno}</td>
+                        <td class="u-border-1 u-border-grey-75 u-table-cell">{presenca}</td>
+                        <td class="u-border-1 u-border-grey-75 u-table-cell"><button onclick="selecionar({presen_aula})">Selecionar</td>
+                      </tr>"""
+
+                return sel
+            if request.method == "POST" and request.form.get("presenca") is None:
+                print("terceira cond")
+                idt_aluno = int(request.form["idt_aluno"])
+                presenca = (request.form["presenca1"])
+
+                mysql = bd.SQL()
+                comando = "SELECT DISTINCT idt_aluno, nme_aluno, presen_aula FROM tb_aula JOIN tb_aula_aluno JOIN tb_aluno " \
+                          "ON idt_aluno=cod_aluno_aula AND cod_aula=idt_aula WHERE idt_aluno=%s;"
+                cs = mysql.consultar(comando, ([idt_aluno]))
+                for [idt_aluno, nme_aluno, presen_aula] in cs:
+                    if presen_aula == True:
+                        presenca = "Presente"
+                    else:
+                        presenca = "Faltou"
+                    selectP = f"""<select id="presenca" name="presenca" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white">
+                                                                                            <optionvalue="{presen_aula}">{presenca}</option>
+                                                                                          <option value="1">Presente</option>
+                                                                                          <option value="0">Falta</option>"""
+
+                    sel += f"""<tr style="height: 56px;">
+                        <input type="hidden" name='idt_aluno' id="idt_aluno" value="{idt_aluno}"/>
+                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">{nme_aluno}</td>
+                        <td class="u-border-1 u-border-grey-75 u-table-cell">{selectP}</select></td>
+                        <td class="u-border-1 u-border-grey-75 u-table-cell"><button onclick="alterar({presen_aula})">Alterar</td>
+                      </tr>"""
+
+                return sel
+            elif request.method == "POST":
+                print("quarta cond")
+                #atualiza o banco de dados
+
+                return "ok"
 
         @app.route('/editar_perfil_p', methods=['POST', "GET"])
         @check_logged_in_p
@@ -675,11 +811,20 @@ class AjudaProf:
                 for [idt_disciplina, nme_disciplina, serie] in cs:
                     sel += f"""<option value="{idt_disciplina}">{nme_disciplina} - {serie}º Ano</option> """
                 sel += "</select>"
-                return render_template('Primeira_TelaNN//incluir_avaliacao.html', nme_disciplina=sel)
+                sel2 = f"""<select id="select-20fa" name="bimestre" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white" >
+                                                                            <option value="{0}">Bimestre</option>
+                                                                            <option value="1">1º Bimestre</option>
+                                                                            <option value="2">2º Bimestre</option>
+                                                                            <option value="3">3º Bimestre</option>
+                                                                            <option value="4">4º Bimestre</option></select>"""
+                return render_template('Primeira_TelaNN//incluir_avaliacao.html', nme_disciplina=sel, bimestre=sel2)
             if request.method == 'POST':
                 dt_avaliacao = request.form['date']
                 idt_disciplina = int(request.form['idt_disciplina'])
-                print("data da avaliação: ",dt_avaliacao,"idt_disciplina: ", idt_disciplina)
+                bimestre = int(request.form['bimestre'])
+                peso = int(request.form["peso"])
+                print("data da avaliação: ", dt_avaliacao, "idt_disciplina: ", idt_disciplina, "bimestre: ",
+                      type(bimestre))
 
                 mysql0 = bd.SQL()
                 comando0 = "SELECT cod_disciplina_turma FROM tb_disciplina JOIN tb_turma on idt_serie_turma=cod_disciplina_turma WHERE idt_disciplina=%s;"
@@ -688,8 +833,8 @@ class AjudaProf:
                 print("serie: ", serie[0])
 
                 # puxa do banco de dados daquele usuário(idt) o usuario e senha para validar
-                comando1 = "INSERT INTO tb_avaliacao(dt_avaliacao, cod_disciplina, cod_avaliacao_turma) values(%s, %s, %s);"
-                mysql0.executar(comando1, [dt_avaliacao, idt_disciplina, serie[0]])
+                comando1 = "INSERT INTO tb_avaliacao(peso_avaliacao, dt_avaliacao, cod_disciplina, cod_avaliacao_turma, cod_bimestre) values(%s, %s, %s, %s, %s);"
+                mysql0.executar(comando1, [peso, dt_avaliacao, idt_disciplina, serie[0], bimestre])
 
                 comando2 = "SELECT idt_avaliacao FROM tb_avaliacao WHERE dt_avaliacao=%s AND cod_disciplina=%s AND cod_avaliacao_turma=%s;"
                 cs1 = mysql0.consultar(comando2, [dt_avaliacao, idt_disciplina, serie[0]])

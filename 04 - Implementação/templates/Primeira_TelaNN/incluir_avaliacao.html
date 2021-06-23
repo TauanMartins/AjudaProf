@@ -46,15 +46,21 @@
             <div class="u-form-group">
                 {{nme_disciplina | safe}}
               </div>
-              <div class="u-form-group">
-                {{idt_serie | safe}}
+             <div class="u-form-group">
+                {{bimestre | safe}}
               </div>
+             <div class="u-form-date u-form-group u-form-group-1">
+              <label for="date-f011" class="u-form-control-hidden u-label">Peso</label>
+              <input type="text" placeholder="Peso da Avaliação" id="peso" name="peso" class="u-border-1 u-border-grey-30 u-input u-input-rectangle u-white"
+                     onkeypress="return event.charCode >= 48 && event.charCode <= 57" minlength="1" maxlength="1" required="required">
+            </div>
             <div class="u-align-center u-form-group u-form-submit">
               <a href="#" class="u-active-custom-color-2 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-2">Incluir</a>
               <input type="submit" value="submit" class="u-form-control-hidden">
             </div>
           </form>
         </div>
+      </div>
       </div>
     </section>
     <div><img id="carregando" style="position:absolute; top:30%; left:45%; display: none" src="static/images/loading.gif" ></div>

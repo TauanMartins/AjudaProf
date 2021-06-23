@@ -7,9 +7,11 @@
     <meta name="description" content="">
     <meta name="page_type" content="np-template-header-footer-from-plugin">
     <title>alterar_presenca</title>
-    <link rel="stylesheet" href="static/nicepage.css" media="screen">
+    <link rel="stylesheet" href="static/nicepage_visu.css" media="screen">
 <link rel="stylesheet" href="static/alterar_presenca.css" media="screen">
-    <script class="u-script" type="text/javascript" src="static/jquery.js" defer=""></script>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script class="u-script" type="text/javascript" src="static/nicepage.js" defer=""></script>
     <meta name="generator" content="Nicepage 3.17.5, nicepage.com">
     <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
@@ -25,218 +27,170 @@
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#478ac9">
   </head>
-  <body class="u-body"><header class="u-align-left u-clearfix u-header u-header" id="sec-29ca"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+  <body onload="turma(6,1)" class="u-body"><header class="u-align-left u-clearfix u-header u-header" id="sec-29ca"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
         <h1 class="u-custom-font u-text u-text-1">
           <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-active-custom-color-2 u-text-custom-color-1 u-text-hover-custom-color-1 u-btn-1" href="">Ajuda Prof</a>
         </h1>
       </div></header> 
     <section class="u-align-center u-clearfix u-custom-color-3 u-section-1" id="sec-63ed">
       <div class="u-clearfix u-sheet u-sheet-1">
-        <a href="https://nicepage.com/k/portfolio-html-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-1">Voltar ao menu</a>
-        <a href="https://nicepage.com/k/portfolio-html-templates" class="u-active-custom-color-2 u-border-0 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-2">Alterar Notas</a>
+        <a href="/menu_principal_prof" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-1">Voltar ao menu</a>
+        <a href="/alterar_notas" class="u-active-custom-color-2 u-border-0 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-2">Alterar Notas</a>
         <div class="u-tabs u-tabs-1">
           <ul class="u-tab-list u-unstyled" role="tablist">
             <li class="u-tab-item u-tab-item-1" role="presentation">
-              <a class="active u-active-white u-button-style u-tab-link u-tab-link-1" id="link-tab-4fce" href="#tab-4fce" role="tab" aria-controls="tab-4fce" aria-selected="true">6º Ano</a>
+              <a onclick="turma(6, 1)" class="active u-active-white u-button-style u-tab-link u-tab-link-1" id="link-tab-4fce" href="#tab-4fce" role="tab" aria-controls="tab-4fce" aria-selected="true">6º Ano</a>
             </li>
             <li class="u-tab-item u-tab-item-2" role="presentation">
-              <a class="u-active-white u-button-style u-tab-link u-tab-link-2" id="link-tab-7ba3" href="#tab-7ba3" role="tab" aria-controls="tab-7ba3" aria-selected="false">7º Ano</a>
+              <a  onclick="turma(7, 1)"class="u-active-white u-button-style u-tab-link u-tab-link-2" id="link-tab-7ba3" href="#tab-7ba3" role="tab" aria-controls="tab-7ba3" aria-selected="false">7º Ano</a>
             </li>
             <li class="u-tab-item u-tab-item-3" role="presentation">
-              <a class="u-active-white u-button-style u-tab-link u-tab-link-3" id="link-tab-af28" href="#tab-af28" role="tab" aria-controls="tab-af28" aria-selected="false">8º Ano</a>
+              <a onclick="turma(8, 1)" class="u-active-white u-button-style u-tab-link u-tab-link-3" id="link-tab-af28" href="#tab-af28" role="tab" aria-controls="tab-af28" aria-selected="false">8º Ano</a>
             </li>
             <li class="u-tab-item u-tab-item-4" role="presentation">
-              <a class="u-active-white u-button-style u-tab-link u-tab-link-4" id="link-tab-49f0" href="#tab-49f0" role="tab" aria-controls="tab-49f0" aria-selected="false">9º Ano</a>
+              <a onclick="turma(9, 1)" class="u-active-white u-button-style u-tab-link u-tab-link-4" id="link-tab-49f0" href="#tab-49f0" role="tab" aria-controls="tab-49f0" aria-selected="false">9º Ano</a>
             </li>
             <li class="u-tab-item u-tab-item-5" role="presentation">
-              <a class="u-active-white u-button-style u-tab-link u-tab-link-5" id="link-tab-9d9d" href="#tab-9d9d" role="tab" aria-controls="tab-9d9d" aria-selected="false">1º Ano</a>
+              <a onclick="turma(1, 1)" class="u-active-white u-button-style u-tab-link u-tab-link-5" id="link-tab-9d9d" href="#tab-9d9d" role="tab" aria-controls="tab-9d9d" aria-selected="false">1º Ano</a>
             </li>
             <li class="u-tab-item u-tab-item-6" role="presentation">
-              <a class="u-active-white u-button-style u-tab-link u-tab-link-6" id="link-tab-e6ef" href="#tab-e6ef" role="tab" aria-controls="tab-e6ef" aria-selected="false">2º Ano</a>
+              <a onclick="turma(2, 1)" class="u-active-white u-button-style u-tab-link u-tab-link-6" id="link-tab-e6ef" href="#tab-e6ef" role="tab" aria-controls="tab-e6ef" aria-selected="false">2º Ano</a>
             </li>
             <li class="u-tab-item u-tab-item-7" role="presentation">
-              <a class="u-active-white u-button-style u-tab-link u-tab-link-7" id="link-tab-7db8" href="#tab-7db8" role="tab" aria-controls="tab-7db8" aria-selected="false">3º Ano</a>
+              <a onclick="turma(3, 1)" class="u-active-white u-button-style u-tab-link u-tab-link-7" id="link-tab-7db8" href="#tab-7db8" role="tab" aria-controls="tab-7db8" aria-selected="false">3º Ano</a>
             </li>
           </ul>
           <div class="u-tab-content">
             <div class="u-container-style u-tab-active u-tab-pane u-white u-tab-pane-1" id="tab-4fce" role="tabpanel" aria-labelledby="link-tab-4fce">
               <div class="u-container-layout u-container-layout-1">
-                <a href="https://nicepage.com/c/medicine-science-html-templates" class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-3">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
-                </a>
+                <select onchange=turma(6,value) class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-3">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
+                <option value="1">1 Bimestre</option>
+                <option value="2">2 Bimestre</option>
+                <option value="3">3 Bimestre</option>
+                <option value="4">4 Bimestre</option>
+                </select>
                 <div class="u-table u-table-responsive u-table-1">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="50%">
                       <col width="50%">
+                      <col width="50%">
                     </colgroup>
-                    <tbody class="u-table-alt-grey-10 u-table-body">
-                      <tr style="height: 26px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presença</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">João Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
-                      <tr style="height: 39px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Pedro Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Falta</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Isabela Aluna</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
+                    <tbody id="tabela6" class="u-table-alt-grey-10 u-table-body">
+
                     </tbody>
                   </table>
-                </div>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-4">salvar</a>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-5">Desfazer</a>
-                <div class="u-table u-table-responsive u-table-2">
+                <div  class="u-table u-table-responsive u-table-2">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="100%">
                     </colgroup>
-                    <tbody class="u-table-body">
+                    <tbody style="bottom:200px" class="u-table-body">
                       <tr style="height: 48px;">
-                        <td class="u-border-1 u-border-custom-color-1 u-table-cell">DATE</td>
+                        <td class="u-border-1 u-border-custom-color-1 u-table-cell"><input type="date" id="data6"></td>
                       </tr>
                     </tbody>
                   </table>
                 </div>
               </div>
+
+                </div>
             </div>
             <div class="u-container-style u-tab-pane u-white u-tab-pane-2" id="tab-7ba3" role="tabpanel" aria-labelledby="link-tab-7ba3">
               <div class="u-container-layout u-container-layout-2">
-                <a href="https://nicepage.com/c/medicine-science-html-templates" class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-6">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-2"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
-                </a>
+                <select onchange=turma(7,value) class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-3">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
+                <option value="1">1 Bimestre</option>
+                <option value="2">2 Bimestre</option>
+                <option value="3">3 Bimestre</option>
+                <option value="4">4 Bimestre</option>
+                </select>
                 <div class="u-table u-table-responsive u-table-3">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="50%">
                       <col width="50%">
                     </colgroup>
-                    <tbody class="u-table-alt-grey-10 u-table-body">
-                      <tr style="height: 26px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presença</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">João Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
-                      <tr style="height: 39px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Pedro Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Falta</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Isabela Aluna</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
+                    <tbody id="tabela7" class="u-table-alt-grey-10 u-table-body">
+
                     </tbody>
                   </table>
-                </div>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-7">salvar</a>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-8">Desfazer</a>
-                <div class="u-table u-table-responsive u-table-4">
+               <div class="u-table u-table-responsive u-table-4">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="100%">
                     </colgroup>
                     <tbody class="u-table-body">
                       <tr style="height: 48px;">
-                        <td class="u-border-1 u-border-custom-color-1 u-table-cell">DATE</td>
+                        <td class="u-border-1 u-border-custom-color-1 u-table-cell"><input type="date" id="data7"></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
                 </div>
               </div>
             </div>
             <div class="u-container-style u-tab-pane u-white u-tab-pane-3" id="tab-af28" role="tabpanel" aria-labelledby="link-tab-af28">
               <div class="u-container-layout u-container-layout-3">
-                <a href="https://nicepage.com/c/medicine-science-html-templates" class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-9">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-3"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
-                </a>
+                <select onchange=turma(8,value) class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-3">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
+                <option value="1">1 Bimestre</option>
+                <option value="2">2 Bimestre</option>
+                <option value="3">3 Bimestre</option>
+                <option value="4">4 Bimestre</option>
+                </select>
                 <div class="u-table u-table-responsive u-table-5">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="50%">
                       <col width="50%">
                     </colgroup>
-                    <tbody class="u-table-alt-grey-10 u-table-body">
-                      <tr style="height: 26px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presença</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">João Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
-                      <tr style="height: 39px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Pedro Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Falta</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Isabela Aluna</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
+                    <tbody id="tabela8" class="u-table-alt-grey-10 u-table-body">
+
                     </tbody>
                   </table>
-                </div>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-10">salvar</a>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-11">Desfazer</a>
-                <div class="u-table u-table-responsive u-table-6">
+                 <div class="u-table u-table-responsive u-table-6">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="100%">
                     </colgroup>
                     <tbody class="u-table-body">
                       <tr style="height: 48px;">
-                        <td class="u-border-1 u-border-custom-color-1 u-table-cell">DATE</td>
+                        <td class="u-border-1 u-border-custom-color-1 u-table-cell"><input type="date" id="data8"></td>
                       </tr>
                     </tbody>
                   </table>
+                </div>
+
                 </div>
               </div>
             </div>
             <div class="u-container-style u-tab-pane u-white u-tab-pane-4" id="tab-49f0" role="tabpanel" aria-labelledby="link-tab-49f0">
               <div class="u-container-layout u-container-layout-4">
-                <a href="https://nicepage.com/c/medicine-science-html-templates" class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-12">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-4"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
-                </a>
+                <select onchange=turma(9,value) class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-3">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
+                <option value="1">1 Bimestre</option>
+                <option value="2">2 Bimestre</option>
+                <option value="3">3 Bimestre</option>
+                <option value="4">4 Bimestre</option>
+                </select>
                 <div class="u-table u-table-responsive u-table-7">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="50%">
                       <col width="50%">
                     </colgroup>
-                    <tbody class="u-table-alt-grey-10 u-table-body">
-                      <tr style="height: 26px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presença</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">João Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
-                      <tr style="height: 39px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Pedro Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Falta</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Isabela Aluna</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
+                    <tbody id="tabela9" class="u-table-alt-grey-10 u-table-body">
+
                     </tbody>
                   </table>
                 </div>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-13">salvar</a>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-14">Desfazer</a>
-                <div class="u-table u-table-responsive u-table-8">
+                 <div class="u-table u-table-responsive u-table-8">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="100%">
                     </colgroup>
                     <tbody class="u-table-body">
                       <tr style="height: 48px;">
-                        <td class="u-border-1 u-border-custom-color-1 u-table-cell">DATE</td>
+                        <td class="u-border-1 u-border-custom-color-1 u-table-cell"><input type="date" id="data9"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -245,36 +199,23 @@
             </div>
             <div class="u-container-style u-tab-pane u-white u-tab-pane-5" id="tab-9d9d" role="tabpanel" aria-labelledby="link-tab-9d9d">
               <div class="u-container-layout u-container-layout-5">
-                <a href="https://nicepage.com/c/medicine-science-html-templates" class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-15">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-5"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
-                </a>
+                <select onchange=turma(1,value) class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-3">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
+                <option value="1">1 Bimestre</option>
+                <option value="2">2 Bimestre</option>
+                <option value="3">3 Bimestre</option>
+                <option value="4">4 Bimestre</option>
+                </select>
                 <div class="u-table u-table-responsive u-table-9">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="50%">
                       <col width="50%">
                     </colgroup>
-                    <tbody class="u-table-alt-grey-10 u-table-body">
-                      <tr style="height: 26px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presença</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">João Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
-                      <tr style="height: 39px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Pedro Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Falta</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Isabela Aluna</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
+                    <tbody id="tabela1" class="u-table-alt-grey-10 u-table-body">
+
                     </tbody>
                   </table>
                 </div>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-16">salvar</a>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-17">Desfazer</a>
                 <div class="u-table u-table-responsive u-table-10">
                   <table class="u-table-entity">
                     <colgroup>
@@ -282,7 +223,7 @@
                     </colgroup>
                     <tbody class="u-table-body">
                       <tr style="height: 48px;">
-                        <td class="u-border-1 u-border-custom-color-1 u-table-cell">DATE</td>
+                        <td class="u-border-1 u-border-custom-color-1 u-table-cell"><input type="date" id="data1"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -291,44 +232,31 @@
             </div>
             <div class="u-container-style u-tab-pane u-white u-tab-pane-6" id="tab-e6ef" role="tabpanel" aria-labelledby="link-tab-e6ef">
               <div class="u-container-layout u-container-layout-6">
-                <a href="https://nicepage.com/c/medicine-science-html-templates" class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-18">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-6"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
-                </a>
+                <select onchange=turma(2,value) class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-3">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
+                <option value="1">1 Bimestre</option>
+                <option value="2">2 Bimestre</option>
+                <option value="3">3 Bimestre</option>
+                <option value="4">4 Bimestre</option>
+                </select>
                 <div class="u-table u-table-responsive u-table-11">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="50%">
                       <col width="50%">
                     </colgroup>
-                    <tbody class="u-table-alt-grey-10 u-table-body">
-                      <tr style="height: 26px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presença</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">João Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
-                      <tr style="height: 39px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Pedro Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Falta</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Isabela Aluna</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
+                    <tbody id="tabela2" class="u-table-alt-grey-10 u-table-body">
+
                     </tbody>
                   </table>
                 </div>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-19">salvar</a>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-20">Desfazer</a>
-                <div class="u-table u-table-responsive u-table-12">
+                 <div class="u-table u-table-responsive u-table-12">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="100%">
                     </colgroup>
                     <tbody class="u-table-body">
                       <tr style="height: 48px;">
-                        <td class="u-border-1 u-border-custom-color-1 u-table-cell">DATE</td>
+                        <td class="u-border-1 u-border-custom-color-1 u-table-cell"><input type="date" id="data2"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -337,36 +265,22 @@
             </div>
             <div class="u-container-style u-tab-pane u-white u-tab-pane-7" id="tab-7db8" role="tabpanel" aria-labelledby="link-tab-7db8">
               <div class="u-container-layout u-container-layout-7">
-                <a href="https://nicepage.com/c/medicine-science-html-templates" class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-21">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-7"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
-                </a>
+                <select onchange=turma(3,value) class="u-border-1 u-border-palette-1-light-1 u-btn u-btn-round u-button-style u-none u-radius-3 u-text-palette-1-dark-2 u-btn-3">Turma&nbsp;<span class="u-icon u-text-palette-1-dark-2 u-icon-1"><svg class="u-svg-content" viewBox="0 0 490.677 490.677" x="0px" y="0px" style="width: 1em; height: 1em;"><path d="M489.272,37.339c-1.92-3.307-5.44-5.333-9.259-5.333H10.68c-3.819,0-7.339,2.027-9.259,5.333    c-1.899,3.307-1.899,7.36,0.021,10.667l234.667,405.333c1.899,3.307,5.419,5.333,9.237,5.333s7.339-2.027,9.237-5.333 L489.251,48.005C491.149,44.72,491.149,40.645,489.272,37.339z"></path></svg><img></span>
+                <option value="1">1 Bimestre</option>
+                <option value="2">2 Bimestre</option>
+                <option value="3">3 Bimestre</option>
+                <option value="4">4 Bimestre</option>
+                </select>
                 <div class="u-table u-table-responsive u-table-13">
                   <table class="u-table-entity">
                     <colgroup>
                       <col width="50%">
                       <col width="50%">
                     </colgroup>
-                    <tbody class="u-table-alt-grey-10 u-table-body">
-                      <tr style="height: 26px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Alunos</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presença</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">João Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
-                      <tr style="height: 39px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Pedro Aluno</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Falta</td>
-                      </tr>
-                      <tr style="height: 56px;">
-                        <td class="u-border-1 u-border-grey-75 u-first-column u-table-cell">Isabela Aluna</td>
-                        <td class="u-border-1 u-border-grey-75 u-table-cell">Presente</td>
-                      </tr>
+                    <tbody id="tabela3" class="u-table-alt-grey-10 u-table-body">
                     </tbody>
                   </table>
                 </div>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-22">salvar</a>
-                <a href="https://nicepage.com/c/table-website-templates" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-23">Desfazer</a>
                 <div class="u-table u-table-responsive u-table-14">
                   <table class="u-table-entity">
                     <colgroup>
@@ -374,7 +288,7 @@
                     </colgroup>
                     <tbody class="u-table-body">
                       <tr style="height: 48px;">
-                        <td class="u-border-1 u-border-custom-color-1 u-table-cell">DATE</td>
+                        <td class="u-border-1 u-border-custom-color-1 u-table-cell"><input type="date" id="data3"></td>
                       </tr>
                     </tbody>
                   </table>
@@ -385,7 +299,8 @@
         </div>
       </div>
     </section>
-    
+    <div><img id="carregando" style="position:absolute; top:30%; left:45%; display: none" src="static/images/loading.gif" ></div>
+
     
     <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-b3dc"><div class="u-clearfix u-sheet u-sheet-1">
         <p class="u-small-text u-text u-text-variant u-text-1">Site AjudaProf<br>
@@ -393,3 +308,93 @@
       </div></footer>
   </body>
 </html>
+<script>
+  $.ajaxSetup({
+      type: "POST",
+
+      beforeSend: function () {
+        $("#carregando").css("display", "block");
+        $('#sec-63ed').css("opacity", 0.2);
+      },
+      complete: function () {
+        $('#carregando').css("display", "none");
+     $('#sec-63ed').css("opacity", 1);
+      }
+   });
+  function turma(serie, bimestre){
+    $.ajax({
+     method : "POST",
+     url: "\alterar_presenca",
+     data: {serie: serie, bimestre: bimestre },
+     success: function( retorno ) {
+       if (serie===6){
+         $('#tabela6').html(retorno);
+       }
+       if (serie===7){
+         $('#tabela7').html(retorno);
+       }
+       if (serie===8){
+         $('#tabela8').html(retorno);
+       }
+       if (serie===9){
+         $('#tabela9').html(retorno);
+       }
+       if (serie===1){
+         $('#tabela1').html(retorno);
+       }
+       if (serie===2){
+         $('#tabela2').html(retorno);
+       }
+       if (serie===3){
+         $('#tabela3').html(retorno);
+       }
+
+     }
+   });
+ }
+ function selecionar(presenca){
+    const serie2 = $('#serie2').val();
+    $.ajax({
+     method : "POST",
+     url: "\alterar_presenca",
+     data: {presenca1: presenca, idt_aluno: $('#idt_aluno').val() },
+     success: function( retorno ) {
+       if (serie2==='6'){
+         $('#tabela6').html(retorno);
+       }
+       if (serie2==='7'){
+         $('#tabela7').html(retorno);
+       }
+       if (serie2==='8'){
+         $('#tabela8').html(retorno);
+       }
+       if (serie2==='9'){
+         $('#tabela9').html(retorno);
+       }
+       if (serie2==='1'){
+         $('#tabela1').html(retorno);
+       }
+       if (serie2==='2'){
+         $('#tabela2').html(retorno);
+       }
+       if (serie2==='3'){
+         $('#tabela3').html(retorno);
+       }
+
+     }
+   });
+ }
+ function alterar(presenca){
+    $.ajax({
+     method : "POST",
+     url: "\alterar_presenca",
+     data: {presenca: presenca, idt_aluno: $('#idt_aluno').val() },
+     success: function ( retorno ) {
+       alert("Alterado com sucesso.")
+     },
+     error: function (retorno) {
+       alert("ERRO")
+     }
+   });
+ }
+</script>
