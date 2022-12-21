@@ -1,0 +1,87 @@
+h1{
+   font-family: garamond;
+   font-size: 3em;
+   color: black;
+}
+
+h2, #segundo-titulo{
+   text-decoration:none;
+   font-family: Brush Script MT;
+   font-size: 1.8em;
+   color: #299700;
+}
+
+hr{
+   background-color: black;
+   height: 5px;
+   border: none;
+}
+
+li{
+   padding: 10px;
+}
+
+
+.botaoT1{
+    padding: 20px;
+   font-family: garamond;
+   font-size: 3em;
+   top:50%;
+}
+
+.botaoT1:link{
+   text-decoration:none;
+   color: gray;
+}
+
+.botaoT1:hover{
+   font-weight: bold;
+}
+
+table{
+   padding: 20px;
+   font-family: garamond;
+   font-size: 1.2em;
+   color: black;
+   border-collapse: collapse;
+}
+
+th, td {
+   border: 1px solid black;
+   padding: 7px;
+}
+
+select, input[type=text], input[type=password]{
+   font-family: garamond;
+   font-size: 1.2em;
+   font-weight: bold;
+   color: black;
+}
+
+#tela1 {
+  margin: 200px;
+  font-size: 110%;
+}
+#login {
+    margin: 120px;
+  font-size: 110%;
+}
+button{
+   font-family: garamond;
+   font-size: 1em;
+   font-weight: bold;
+   color: black;
+   padding: 7px;
+}
+@font-face {
+  font-family: 'Kristinha';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/kristi/v12/uK_y4ricdeU6zwdhDRcS.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+.login {
+   font-family: 'Kristinha';
+    margin: 120px;
+  font-size: 110%;
+}
