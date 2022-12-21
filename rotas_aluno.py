@@ -20,7 +20,7 @@ class Aluno:
                 senha_a = request.form['senha_a']
 
                 # abre o banco de dados
-                mysql = bd.SQL()
+                mysql = db.SQL()
 
                 # puxa do banco de dados info(usuario e senha) do usuário q
                 # logou, isso puxará a senha para a validação
@@ -74,7 +74,7 @@ class Aluno:
             # comando get para renderizar o html de editar perfil do aluno
             if request.method == "GET":
                 # abre o banco de dados para mostrar todos os dados p alterar
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT * FROM tb_aluno JOIN tb_turma ON " \
                           "idt_serie_turma=cod_turma WHERE matricula_aluno=%s;"
                 cs = mysql.consultar(comando, [session['user_a']])
@@ -91,7 +91,7 @@ class Aluno:
                 sangue = request.form["sangue"]
 
                 # abre o banco para fazer o update
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "UPDATE tb_aluno SET mao_aluno=%s, sangue_aluno=%s " \
                           "WHERE matricula_aluno=%s;"
                 mysql.executar(comando, [mao, sangue, session['user_a']])
@@ -124,7 +124,7 @@ class Aluno:
                 # abre o banco de dados e inicia uma transação, insere o resp.
                 # e depois o aluno, em seguida é feito um commit para cumprir os
                 # dois inserts, caso falhe em um os dois processos não se completam
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 mysql.cnx.start_transaction()
                 comando = "INSERT INTO tb_responsavel(cpf_responsavel, nme_responsavel) " \
                           "VALUES(%s, %s);"

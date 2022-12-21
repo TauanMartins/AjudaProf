@@ -19,7 +19,7 @@ class Professor:
                 senha_p = request.form['senha_p']
 
                 # abre o banco de dados
-                mysql = bd.SQL()
+                mysql = db.SQL()
 
                 # puxa do banco de dados info(usuario e senha) do usuário q
                 # logou, isso puxará a senha para a validação
@@ -58,7 +58,7 @@ class Professor:
             ocorrencias_msg = ''
             if request.method == "GET":
                 # chama o banco
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 # mostra o nome do usuário
                 comando = "SELECT idt_professor, nme_professor FROM tb_professor WHERE matricula_professor=%s;"
                 cs = mysql.consultar(comando, [session['user_p']])
@@ -94,7 +94,7 @@ class Professor:
                 mural = request.form['mensagem']
                 data = request.form['data']
                 # abre o banco de dados p postagem a mensagem no banco
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "INSERT INTO tb_mural(mural_mensagem, data_mensagem, cod_mural_professor," \
                           " cod_mural_aluno, cod_mural_resp) VALUES(%s, %s, %s, %s, %s);"
                 cs = mysql.executar(comando, [mural, data, 6, 8, 1234567890])
@@ -107,7 +107,7 @@ class Professor:
                 data = request.form['data']
                 matricula = request.form['matricula']
                 # abre o banco de dados p postagem a mensagem no banco
-                mysql = bd.SQL()
+                mysql = db.SQL()
 
                 comando0 = "SELECT idt_professor FROM tb_professor WHERE matricula_professor=%s;"
                 cs0 = mysql.consultar(comando0, [(session["user_p"])])
@@ -129,7 +129,7 @@ class Professor:
             # metodo get para renderizar pagina com caixas p inserção da aula
             if request.method == "GET":
                 # abre o banco para puxar o idt da disciplina e fazer um select com todas as informações
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT idt_disciplina, nme_disciplina, cod_disciplina_serie FROM tb_professor join tb_disciplina on " \
                           "cod_disciplina_professor=idt_professor and matricula_professor=%s order by cod_disciplina_serie;"
                 cs = mysql.consultar(comando, [(session["user_p"])])
@@ -150,7 +150,7 @@ class Professor:
                 bimestre = request.form["bimestre"]
 
                 # abre o banco e abre uma transação para inserção da aula e relação
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 mysql.cnx.start_transaction()
 
                 # insere a aula com os dados digitados
@@ -204,7 +204,7 @@ class Professor:
                 # abre o banco consultar o idt único daquela disciplina.
                 # ex: matemática do 6 ano difere-se de matemática do 7 ano
                 # possuem idts diferentes.
-                banco = bd.SQL()
+                banco = db.SQL()
                 comando1 = "select idt_disciplina, nme_disciplina from tb_disciplina " \
                            "join tb_professor join tb_turma on " \
                            "idt_professor=cod_disciplina_professor and " \
@@ -288,7 +288,7 @@ class Professor:
 
                 # banco é aberto e é mostrado o boletim(idt) daquele aluno específico
                 # para inserir as notas nele.
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT idt_avaliacao FROM tb_aluno JOIN tb_notas " \
                           "JOIN tb_avaliacao JOIN ta_bimestre_turma JOIN " \
                           "tb_disciplina ON cod_aluno_serie=cod_ta_serie_turma " \
@@ -325,7 +325,7 @@ class Professor:
                 data = request.form['date']
 
                 # banco é aberto para puxar idt da série
-                banco = bd.SQL()
+                banco = db.SQL()
                 comando1 = "select idt_disciplina, nme_disciplina from tb_disciplina " \
                            "join tb_professor join tb_turma on " \
                            "idt_professor=cod_disciplina_professor and " \
@@ -376,7 +376,7 @@ class Professor:
                 presenca = (request.form["presenca"])
 
                 # abre o banco para alterar os dados do aluno em relacao aos dados requisitados
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "UPDATE ta_aula_aluno SET presen_aula=%s WHERE cod_ta_aluno=%s AND cod_ta_aula=%s;"
                 mysql.executar(comando, ([presenca, idt_aluno, idt_aula]))
                 mysql.cnx.commit()
@@ -388,7 +388,7 @@ class Professor:
             # comando get para renderizar o html de editar perfil do prof
             if request.method == "GET":
                 # abre o banco de dados para mostrar todos os dados p alterar
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT * FROM tb_professor WHERE matricula_professor=%s;"
                 cs = mysql.consultar(comando, [session['user_p']])
                 dados = cs.fetchone()
@@ -404,7 +404,7 @@ class Professor:
                 sangue = request.form["sangue"]
 
                 # abre o banco para fazer o update
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "UPDATE tb_professor SET nme_professor=%s, matricula_professor=%s, " \
                           "nasc_professor=%s, sangue_professor=%s WHERE matricula_professor=%s;"
                 mysql.executar(comando, [nme, matricula, data, sangue, session['user_p']])

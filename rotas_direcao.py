@@ -56,7 +56,7 @@ class Direcao:
                 sangue_professor = request.form['sangue_professor']
 
                 # abre o banco para inserir um professor com os dados requisitados
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "INSERT INTO tb_professor(nme_professor, senha_professor, " \
                           "matricula_professor, " \
                           "nasc_professor, sangue_professor) " \
@@ -74,7 +74,7 @@ class Direcao:
             # metodo get abaixo retorna todos os professores bem como suas disciplinas
             if request.method == "GET":
                 # abre o banco de dados para puxar professores
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT idt_professor, nme_professor, matricula_professor, nasc_professor," \
                           "sangue_professor, nme_disciplina FROM tb_professor join tb_disciplina on " \
                           "cod_disciplina_professor=idt_professor " \
@@ -97,7 +97,7 @@ class Direcao:
                 return render_template('alterar_prof.html', prof=sel)
             elif request.method == "POST" and request.form.get('matricula') is None:
                 idtProfessor = request.form['idt']
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT * FROM tb_professor join tb_disciplina on cod_disciplina_professor=idt_professor " \
                           "WHERE idt_professor=%s GROUP BY nme_professor;"
                 cs = mysql.consultar(comando, [int(idtProfessor)])
@@ -138,7 +138,7 @@ class Direcao:
                 matricula = request.form["matricula"]
                 data = request.form["data"]
                 sangue = request.form["sangue"]
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "UPDATE tb_professor SET nme_professor=%s, matricula_professor=%s, senha_professor=%s, " \
                           "nasc_professor=%s, sangue_professor=%s WHERE idt_professor=%s;"
                 mysql.executar(comando, [nme, matricula, senha, data, sangue, idtProfessor])
@@ -156,7 +156,7 @@ class Direcao:
             # mostre todos os alunos não matriculados
             if request.method == "POST" and request.form.get('idt') is None:
                 # abre o banco de dados para mostrar os alunos
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT * FROM tb_aluno join tb_responsavel on cod_aluno_resp=cpf_responsavel " \
                           "WHERE matricula_aluno is NULL ORDER BY nme_aluno;"
                 cs = mysql.consultar(comando, ())
@@ -185,7 +185,7 @@ class Direcao:
                 idtAluno = request.form["idt"]
 
                 # abre o banco de dados e puxa aquele aluno especifico
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT * FROM tb_aluno join tb_responsavel on cod_aluno_resp=cpf_responsavel WHERE idt_aluno=%s;"
                 cs = mysql.consultar(comando, ([idtAluno]))
 
@@ -233,7 +233,7 @@ class Direcao:
                 serie = request.form["serie"]
 
                 # abre o banco de dados e faz o update com dados requisitados
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando2 = "UPDATE tb_aluno SET nme_aluno=%s, matricula_aluno=%s, " \
                            "cod_aluno_serie=%s WHERE idt_aluno=%s;"
                 mysql.executar(comando2, [nme, matricula, serie, idtAluno])
@@ -253,7 +253,7 @@ class Direcao:
                 idtSerie = request.form['select']
 
                 # abre o banco de dados para puxar todos os alunos
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT * FROM tb_aluno JOIN tb_turma ON idt_serie_turma=cod_aluno_serie " \
                           "AND idt_serie_turma=%s ORDER BY nme_aluno;"
                 cs = mysql.consultar(comando, ([idtSerie]))
@@ -279,7 +279,7 @@ class Direcao:
                 idtAluno = request.form['idt']
 
                 # abre o banco para puxar dados daquele aluno específico
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT * FROM tb_aluno JOIN tb_turma ON " \
                           "idt_serie_turma=cod_aluno_serie WHERE idt_aluno=%s;"
                 cs = mysql.consultar(comando, [int(idtAluno)])
@@ -349,7 +349,7 @@ class Direcao:
                 sangue = request.form["sangue"]
 
                 # abre o banco e faz o update no aluno de acordo as info requisitadas
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "UPDATE tb_aluno SET nme_aluno=%s, matricula_aluno=%s, " \
                           "nasc_aluno=%s, mao_aluno=%s, sangue_aluno=%s, cod_aluno_serie=%s WHERE idt_aluno=%s;"
                 mysql.executar(comando, [nme, matricula, data, mao, sangue, serie, idtAluno])
@@ -362,7 +362,7 @@ class Direcao:
             # metodo get abaixo renderiza a tela junto com os professores que ali existem
             if request.method == 'GET':
                 # abre o banco de dados e puxa todos os professores
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT idt_professor, nme_professor FROM tb_professor ORDER BY nme_professor;"
                 cs = mysql.consultar(comando, ())
                 # é tratado os profs para serem inseridos no select
@@ -399,7 +399,7 @@ class Direcao:
                 peso4 = request.form['peso4']
 
                 # abre o banco e inicia uma transação
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 mysql.cnx.start_transaction()
 
                 # insere uma disciplina na tabela de acordo com as informações dadas
@@ -438,7 +438,7 @@ class Direcao:
             if request.method == 'GET':
                 # abre o banco de dados para mostrar todas as disciplinas e series
                 # para formar o select
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando0 = "SELECT idt_disciplina, nme_disciplina, cod_disciplina_serie FROM tb_disciplina " \
                            "JOIN tb_turma on idt_serie_turma=cod_disciplina_serie ORDER BY nme_disciplina;"
                 cs = mysql.consultar(comando0, ())
@@ -455,7 +455,7 @@ class Direcao:
 
                 # abre o banco para mostrar alunos daquela serie e disciplina
                 # que não possuem boletim cadastrados
-                mysql = bd.SQL()
+                mysql = db.SQL()
                 comando = "SELECT idt_aluno, nme_aluno, cod_avaliacao_serie, cod_avaliacao_disciplina FROM " \
                           "(select idt_aluno, nme_aluno, cod_avaliacao_serie, cod_avaliacao_disciplina " \
                           "FROM tb_avaliacao JOIN tb_aluno ON cod_avaliacao_serie=cod_aluno_serie WHERE cod_avaliacao_disciplina=%s) c1 " \
@@ -481,7 +481,7 @@ class Direcao:
 
                 # abre o banco de dados e inicia uma transação, em seguida é mostrado todos
                 # os alunos que nao tem boletim cadastrados daquela disciplina/serie
-                mysql0 = bd.SQL()
+                mysql0 = db.SQL()
                 mysql0.cnx.start_transaction()
                 comando1 = "SELECT idt_aluno, idt_avaliacao FROM " \
                            "(select idt_aluno, idt_avaliacao, cod_avaliacao_bimestre " \
