@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html style="font-size: 16px;" lang="pt">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="page_type" content="np-template-header-footer-from-plugin">
+    <title>incluir_prof</title>
+    <link rel="stylesheet" href="static/nicepage.css" media="screen">
+    <link rel="stylesheet" href="static/incluir_avaliacao.css" media="screen">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script class="u-script" type="text/javascript" src="static/nicepage.js" defer=""></script>
+    <meta name="generator" content="Nicepage 3.17.5, nicepage.com">
+    <link id="u-theme-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i">
+    <link id="u-page-google-font" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Kristi:400">
+    
+    
+    <script type="application/ld+json">{
+		"@context": "http://schema.org",
+		"@type": "Organization",
+		"name": "Ajuda_professor"
+}</script>
+    <meta property="og:title" content="incluir_prof">
+    <meta property="og:type" content="website">
+    <meta name="theme-color" content="#478ac9">
+  </head>
+  <body class="u-body"><header class="u-align-left u-clearfix u-header u-sticky u-header" id="sec-29ca"><div class="u-clearfix u-sheet u-valign-middle u-sheet-1">
+        <h1 class="u-custom-font u-text u-text-1">
+          <a class="u-active-none u-border-none u-btn u-button-link u-button-style u-custom-font u-hover-none u-none u-text-active-custom-color-2 u-text-custom-color-1 u-text-hover-custom-color-1 u-btn-1" href="">Ajuda Prof</a>
+        </h1>
+      </div></header>
+    <section class="u-align-center u-clearfix u-section-1" id="sec-4f13">
+      <div class="u-clearfix u-sheet u-valign-top u-sheet-1">
+        <a href="menu_principal_dir" class="u-active-custom-color-2 u-btn u-btn-round u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-1">Voltar ao menu</a>
+        <div class="u-form u-form-1">
+          <form action="#" method="POST" class="u-clearfix u-form-spacing-9 u-form-vertical u-inner-form"  source="custom">
+            <div class="u-form-group u-form-select u-form-group-1">
+                <div class="u-form-select-wrapper">
+                    <select onchange="exec(value)" id="select-20fa" name="idt_disciplina" class="u-border-1 u-border-grey-30 u-input u-input-rectangle" >
+                       <option  value="{0}">Disciplina - Série/Ano</option>
+                        {{disciplina | safe}}
+                    </select>
+                </div>
+            </div>
+          </form>
+        </div>
+          <table class="u-table-entity">
+            <colgroup>
+              <col width="30%">
+              <col width="7%">
+            </colgroup>
+            <tbody class="u-table-body">
+              <tr style="height: 43px;">
+                <td class="u-border-2 u-border-grey-dark-1 u-first-column u-grey-5 u-table-cell">Aluno</td>
+                <td class="u-border-2 u-border-grey-dark-1 u-table-cell">Série/Ano</td>
+              </tr>
+              </tbody>
+              <tbody id="aluno" class="u-table-body">
+            </tbody>
+          </table>
+        <div class="u-form-group u-form-submit">
+                  <a href="#" onclick="incluir()" id="botao" style="padding: 7px; top: 10px; left: 120px" class="u-active-custom-color-2 u-btn u-btn-round u-btn-submit u-button-style u-custom-color-1 u-hover-custom-color-1 u-radius-50 u-btn-1">Incluir boletim dos alunos</a>
+                  <input type="submit"  class="u-form-control-hidden">
+                </div>
+        </div>
+    </section>
+    <div><img id="carregando" style="position:absolute; top:30%; left:45%; display: none" src="static/images/loading.gif" ></div>
+    
+    <footer class="u-align-center u-clearfix u-footer u-grey-80 u-footer" id="sec-b3dc"><div class="u-clearfix u-sheet u-sheet-1">
+        <p class="u-small-text u-text u-text-variant u-text-1">Site AjudaProf<br>
+        </p>
+      </div></footer>
+  </body>
+</html>
+<script>
+  $.ajaxSetup({
+      type: "POST",
+
+      beforeSend: function () {
+        $("#carregando").css("display", "block");
+        $('#sec-4f13').css("opacity", 0.2);
+      },
+      complete: function () {
+        $('#carregando').css("display", "none");
+     $('#sec-4f13').css("opacity", 1);
+      },
+    success: function(  ) {
+       alert("Sucesso ao inserir boletins" )
+     },
+      error: function(  ){
+             alert("Erro ao inserir boletins" )
+         }
+   });
+  function exec(idt){
+   $.ajax({
+     method : "POST",
+     url: "\incluir_avaliacao",
+     data: {idt_disciplina: idt
+     },
+     success: function( retorno ) {
+       $( "#aluno" ).html(retorno);
+     }
+   });
+ }
+  function incluir(){
+   $.ajax({
+     method : "POST",
+     url: "\incluir_avaliacao",
+     data: {idt_disciplina: $('#idt_disciplina').val(), idt_aluno: $('#idt_aluno').val()
+     }
+   });
+ }
+</script>

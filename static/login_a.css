@@ -1,0 +1,85 @@
+.u-section-1 .u-sheet-1 {
+  min-height: 100vh;
+}
+
+.u-section-1 .u-text-1 {
+  font-family: Cookie;
+  width: 144px;
+  font-size: 2.25rem;
+  margin: 27px auto 0;
+}
+
+.u-section-1 .u-btn-1 {
+  border-style: none;
+  font-size: 0.875rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: normal;
+  text-transform: none;
+  margin: -66px 0 0 auto;
+}
+
+.u-section-1 .u-form-1 {
+  height: 183px;
+  width: 300px;
+  margin: 51px auto 0;
+}
+
+.u-section-1 .u-input-1 {
+  background-image: none;
+}
+
+.u-section-1 .u-input-2 {
+  background-image: none;
+}
+
+.u-section-1 .u-btn-2 {
+  letter-spacing: 1px;
+  border-style: none;
+  background-image: none;
+  width: 55%;
+  font-weight: normal;
+  text-transform: none;
+  padding: 7px 30px;
+}
+
+.u-section-1 .u-btn-3 {
+  border-style: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: normal;
+  text-transform: none;
+  margin: 0 auto;
+  padding: 7px 14px 8px 13px;
+}
+
+.u-section-1 .u-btn-4 {
+  border-style: none;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  background-image: none;
+  font-weight: normal;
+  text-transform: none;
+  margin: 9px auto 0;
+  padding: 7px 13px 8px;
+}
+
+@media (max-width: 575px) {
+  .u-section-1 .u-text-1 {
+    font-size: 3rem;
+    width: auto;
+    margin-top: 60px;
+    margin-right: 57px;
+    margin-left: 88px;
+  }
+
+  .u-section-1 .u-btn-1 {
+    margin-top: -113px;
+    padding: 4px 31px 4px 29px;
+  }
+
+  .u-section-1 .u-form-1 {
+    margin-top: 129px;
+  }
+}
